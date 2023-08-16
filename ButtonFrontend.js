@@ -1,4 +1,4 @@
-var o = 1; 
+var o = 1;
 
 //Number what Data is displayed
 var displayNum = 0;
