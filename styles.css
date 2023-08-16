@@ -1,0 +1,31 @@
+div.header label {
+    font-family: Arial;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: grey;
+    background-color: #ffffff;
+    padding-left: 2.5%;
+    padding-right: 1%;
+}
+div.header button {
+    margin-left: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+#picture{
+    padding-top: 4%;
+    position: fixed;
+      bottom: 0;
+    width: 300px;
+}
+
+#center{
+align-items: center;
+}
+
+div{
+display:contents;
+}

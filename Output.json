@@ -1,0 +1,42 @@
+{
+  "Data 1" : {
+    "outputString" : "1234567890",
+    "numberOfData" : 1
+  },
+  "Data 2" : {
+    "outputString" : "0987654321",
+    "numberOfData" : 2
+  },
+  "Data 3" : {
+    "outputString" : "0657456557",
+    "numberOfData" : 3
+  },
+  "Data 4" : {
+    "outputString" : "4555654678",
+    "numberOfData" : 4
+  },
+  "Data 5" : {
+    "outputString" : "7557755677",
+    "numberOfData" : 5
+  },
+  "Data 6" : {
+    "outputString" : "1234143569",
+    "numberOfData" : 6
+  },
+  "Data 7" : {
+    "outputString" : "0978098709",
+    "numberOfData" : 7
+  },
+  "Data 8" : {
+    "outputString" : "ß285ß240ß5",
+    "numberOfData" : 8
+  },
+  "Data 9" : {
+    "outputString" : "2345342552",
+    "numberOfData" : 9
+  },
+  "Data 10" : {
+    "outputString" : "2345234523",
+    "numberOfData" : 10
+  }
+}
