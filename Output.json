@@ -26,17 +26,5 @@
   "Data 7" : {
     "outputString" : "0978098709",
     "numberOfData" : 7
-  },
-  "Data 8" : {
-    "outputString" : "ß285ß240ß5",
-    "numberOfData" : 8
-  },
-  "Data 9" : {
-    "outputString" : "2345342552",
-    "numberOfData" : 9
-  },
-  "Data 10" : {
-    "outputString" : "2345234523",
-    "numberOfData" : 10
   }
 }
