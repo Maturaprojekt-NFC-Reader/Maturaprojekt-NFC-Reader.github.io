@@ -1,5 +1,3 @@
-var o = 1;
-
 //Number what Data is displayed
 var displayNum = 0;
 
@@ -15,6 +13,7 @@ var newButton = document.createElement('button');
 var newButton2 = document.createElement('button');
 var RiseLogo = document.createElement('img');
 
+//class with data for 1 set of labels and input boxes
 class LastString{
     constructor(){
         this.OutputString = "";
@@ -24,6 +23,7 @@ class LastString{
     }
 }
 
+//array for all the data for the labels and input boxes
 class AllLastStrings{
     constructor(){
         this.Strings = [];
@@ -38,10 +38,9 @@ class AllLastStrings{
     }
 }
 
-//Array for all TestStrings
 var allLastStrings = new AllLastStrings();
 
-
+//reading out the data from the JSON file - will be replaced with the database-reader in future
 fetch('Output.json')
             .then(response => response.json())
             .then(data => {
@@ -52,12 +51,13 @@ fetch('Output.json')
                 //The sorted String ready for display
                 lastString = new LastString()
 
-                //Count on how many Strings get into one TestString
+                //Count how many Strings get into one TestString
                 var i = 0;
 
-                //Count got many Test Strings there are
+                //Count many Test Strings there are
                 var j = 0;
 
+                //puts every element in the right place for input into webpage
                 CleanString.forEach(element => {
 
                     if(i==0){
@@ -76,6 +76,7 @@ fetch('Output.json')
                     {
                         lastString.DataNumber = element;
 
+                        //new variable that gets created new with each set of data to minimize errors
                         var newlastString = new LastString();
                         newlastString.DataNumber = lastString.DataNumber;
                         newlastString.NumberofData = lastString.NumberofData;
@@ -87,7 +88,8 @@ fetch('Output.json')
                         j++;
                         i = -1;
 
-                        if(allLastStrings.allStrings.length == 5)
+                        //creates the html file when the first String is done
+                        if(allLastStrings.allStrings.length == 1)
                         {
                         CreateDiv(allLastStrings.allStrings[0]);
                         }
@@ -102,18 +104,22 @@ var k = 0;
 //Cleans the JSON into an Array of "LastString" objects
 function CleanJSON(Input){
 
+//cuts of first "{" and last "}" from the raw String, read from the JSON
 var FirstLetter = Input.slice(1);
 var LastLetter = FirstLetter.slice(0, this.length - 2);
 
+//Splits the single raw String into multiple raw Strings
 var MultipleJSONStrings = LastLetter.split("}");
 var NewMultipleJSONStringsLoop=[];
 var NewMultipleJSONStrings=[];
 var z = 0;
 
 MultipleJSONStrings.forEach(element => {
+
     //number of digits that are getting cut in front of the first string
     var u = 1;
 
+    //chechs where the first "{" is to slice the String there
     while(MultipleJSONStrings[0].charAt(u) != "{"){
         u++;
     }
@@ -125,12 +131,14 @@ MultipleJSONStrings.forEach(element => {
     u++;
     }
 
+    //slices String at the right point to clean it
     NewMultipleJSONStringsLoop[z]=MultipleJSONStrings[z].slice(u);
     NewMultipleJSONStrings[z]=MultipleJSONStrings[z].slice(u);
 
     z++;
 });
 
+//variables to sort the clean Strings into the right place
 var SingleJSONStrings = [];
 var RAM = [];
     var t = 0;
@@ -138,6 +146,7 @@ var RAM = [];
 
 NewMultipleJSONStringsLoop.forEach(element => {
 
+    //cuts the String into 2 Strings and puts them onto an array
     RAM = NewMultipleJSONStrings[t].split(",");
     SingleJSONStrings[r] = RAM[0]
     r++;
@@ -149,12 +158,15 @@ NewMultipleJSONStringsLoop.forEach(element => {
 var Output = [];
 var i =0;
 
+//cleans the 2 Strings on the array
 SingleJSONStrings.forEach(element => {
 
     k++;
 
+    //splits the 2 Strings into the final 4 raw forms
     var Data = element.split(":");
 
+    //checks every String and cleans them up to almost final form
     Data.forEach(element => {
 
         if(element.charAt(0) != '"' && element.charAt(0) != '{')
@@ -172,6 +184,7 @@ SingleJSONStrings.forEach(element => {
 
         Output[i]=LastLetterElement;
 
+        //last slice - after this every String is 100% clean
         for (let j = 0; j < LastLetterElement.length; j++) {
             if(LastLetterElement.charAt(j)=='"')
             {
@@ -182,14 +195,15 @@ SingleJSONStrings.forEach(element => {
         i++;
     })
 });
+
+//returns an array of 4 clean Strings ready for display
 return(Output);
 }
 
-//erstellt die div in der index.html
+//creates the content for the index.html
 function CreateDiv(Input){
 
-var i = 0;
-
+    //sets the values for the  labels and buttons
     div_header.setAttribute('class','header');
     div_header.id = "center";
 
@@ -209,20 +223,18 @@ var i = 0;
     RiseLogo.src = "rise_logo.png";
     RiseLogo.id = "picture";
 
-    //Instantiates all the objects in html in right order
+    //puts all objects into the div
     div_header.appendChild(label2);
     div_header.appendChild(input2);
     div_header.appendChild(label1);
     div_header.appendChild(input1);
-
     div_header.appendChild(paragraph1);
-
     div_header.appendChild(newButton2);
     div_header.appendChild(newButton);
-
     div_header.appendChild(paragraph2);
-
     div_header.appendChild(RiseLogo);
+
+    //Instantiates all the objects in html in right order
     document.body.appendChild(div_header);
 
 }
